@@ -9,6 +9,7 @@ public class Domestica {
     public static void main(String[] args) {
         boolean opcaoMenu = false;
         int aux;
+        
         do {
             System.out.println(" 1 - Lêr detalhes da vaga");
             System.out.println(" 2 - Visualizar endereço para serviço");
