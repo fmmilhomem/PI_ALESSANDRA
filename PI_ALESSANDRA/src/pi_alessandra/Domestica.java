@@ -4,14 +4,11 @@ import java.util.Scanner;
 
 public class Domestica {
 
-    static int aux;
-    static String vetorLocal[] = new String[1];
-    static double vetorAuxNumero[] = new double[2];
-
-    static Scanner entrada = new Scanner(System.in);
-
+    /**
+     * Este metodo exibe o menu principal
+     */
     static void mostrarMenu() {
-        System.out.println();
+        System.out.printf("\n---------- Menu -------------\n\n");
         System.out.println(" 1 - Cadastro de vagas:");
         System.out.println(" 2 - Relatório");
         System.out.println(" 3 - Lêr detalhes da vaga");
@@ -26,74 +23,86 @@ public class Domestica {
     static void switchCase1() {
 
         // aqui entra o comando para cadastrar a vaga
-        System.out.println("Quantos dias da semana precisará ser trabalhado?");//int= diasdeTrabalho;
-        vetorAuxNumero[0] = entrada.nextDouble();
-
-        System.out.println("Quanto deseja pagar para a diarista?"); //double=valorDiarista;
-        vetorAuxNumero[1] = entrada.nextDouble();
-
+        i++;
         System.out.println("Qual a localidade?");
-        vetorLocal[0] = entrada.nextLine();
+        vetorLocal[i] = entrada.next();
+        System.out.println("Quantos dias da semana precisará ser trabalhado?");//int= diasdeTrabalho;
+        vetorAuxDiaria[i] = entrada.nextInt();
+        System.out.println("Quanto deseja pagar para a diarista?"); //double=valorDiarista;
+        vetorAuxValor[i] = entrada.nextDouble();
+        System.out.printf("\n--------- Cadastrado seguinte informações ------------\n\n");
 
     }
 
     static void metodoPrintf() {
-        System.out.printf("\nA vaga está localizada em  " + vetorLocal[0]);
-        System.out.printf("\nA vaga é para trabalhar  dias da semana " + vetorAuxNumero[0]);
-        System.out.printf("\nO salário da empregada será de  " + vetorAuxNumero[1]);
+        System.out.println("A vaga está localizada em  " + vetorLocal[i]);
+        System.out.println("A vaga é para trabalhar " + vetorAuxDiaria[i] + " dias da semana ");
+        System.out.println("O salário da empregada será de  " + vetorAuxValor[i]);
 
     }
 
+    // Variavel para ler entrada do usuarios 
+    static Scanner entrada = new Scanner(System.in);
+
+    // Variaveis
+    static int aux, i;
+    static String auxS;
+    static String vetorLocal[] = new String[10];
+    static int vetorAuxDiaria[] = new int[10];
+    static double vetorAuxValor[] = new double[10];
+
+    //------------------------- Execução do programa -------------------------//
     public static void main(String[] args) {
-        boolean opcaoMenu = false;
-        
+        boolean validarMenu = false;
 
-        // Apresentação 
-        mostrarMenu();
+        while (validarMenu == false) {
+            // Apresentação do menu
+            mostrarMenu();
 
-        // Informar opção do menu acima
-        System.out.print("Informe a opção do menu: ");
-        aux = entrada.nextInt();
-
-        // Verifica se a opção menu inicial é válida
-        // 5 = numero maximo de opcoes do menu
-        while ((aux > 5) || (aux < 1)) {
-            System.out.println("Opção inválida, tente novamente: ");
+            // Informar opção do menu acima
+            System.out.printf("\nInforme a opção do menu: ");
             aux = entrada.nextInt();
+
+            // Verifica se a opção menu inicial é válida - 1 até 5 = São as opções do menu 
+            while ((aux > 5) || (aux < 1)) {
+                System.out.printf("\nOpção inválida, tente novamente: ");
+                aux = entrada.nextInt();
+            }
+            //Array - jasouCadastrado[i].length
+            //Caso do menu
+            switch (aux) {
+                case 1:
+                    System.out.printf("\n----------- Cadastro de vagas -----------\n\n");
+                        i++;
+                        switchCase1();
+                        metodoPrintf();
+                    break;
+
+                case 2:
+                    System.out.printf("\n----------- Relatório -----------\n\n");
+                    //aqui entra o comando para gerar relatórios
+                    // COMO FAZER? QUE TIPO DE RELATORIO ?
+                    break;
+                case 3:
+                    System.out.printf("\n----------- Lêr detalhes da vaga -----------\n\n");
+                    //3.1 : Pesquisar a vaga 
+                    //criar case 1 e jogar aqui com localVaga
+                    String auxLocal;
+                    auxLocal = vetorLocal[0];
+
+                    break;
+
+                case 4:
+                    System.out.printf("\n----------- Aceitar a vaga -----------\n\n");
+                    //4.1 : pesqisar a vaga 
+                    // procurar por localVaga case 1
+                    break;
+                default:
+                    //Criar metodo para sair
+                    validarMenu = true;
+                    break;
+            }
         }
-//Array - jasouCadastrado[i].length
-        //Caso do menu
-        switch (aux) {
-            case 1:
-                System.out.println("Cadastro de vagas:");
-                switchCase1();
-                // metodoPrintf();
-
-                break;
-            case 2:
-                System.out.println("Relatório");
-                //aqui entra o comando para gerar relatórios
-                // COMO FAZER? QUE TIPO DE RELATORIO ?
-                break;
-            case 3:
-                System.out.println("Lêr detalhes da vaga");
-                //3.1 : Pesquisar a vaga 
-                //criar case 1 e jogar aqui com localVaga
-                String auxLocal;
-                auxLocal = vetorLocal[0];
-
-                break;
-
-            case 4:
-                System.out.println("Aceitar a vaga:");
-                //4.1 : pesqisar a vaga 
-                // procurar por localVaga case 1
-                break;
-            case 5:
-                //Criar metodo para sair
-                break;
-
-        }
-        System.out.println("Obrigado volte sempre!"); // Finalizando programa
+        System.out.printf("\nObrigado volte sempre!\n"); // Finalizando programa
     }
 }
