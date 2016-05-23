@@ -8,12 +8,10 @@ public class Domestica {
     static Scanner entrada = new Scanner(System.in);
 
     // Variaveis globais
-    static int opcaoTeclado;
-
     /**
      * Este metodo exibe o Menu Principal
      */
-    static void mostrarMenu() {
+    static void getMenu() {
         System.out.printf("\n---------- Menu -------------\n\n");
         System.out.println(" 1 - Cadastro de vagas:");
         System.out.println(" 2 - Relatório");
@@ -22,33 +20,57 @@ public class Domestica {
         System.out.println(" 5 - Sair "); //precisa elaborar algoritmo
     }
 
+    static void validaMenu(String opcaoDoMenu) {
+        boolean validarMenu = false;
+        boolean flagValidaMenu = false;
+        String opTeclado;
+        int auxiliarTeclado = -1;
+        flagValidaMenu = false;
+        String opcaoTeclado;
+
+        while (flagValidaMenu == false) {
+            //VALIDA SE DIGITOU ENTRE 1 E 5
+            try {
+                flagValidaMenu = true;
+            } catch (Exception error) {
+                //VERIFICA SE O USUARIO DIGIOU LETRA, RETORNA PARA O MENU E PEDE QUE DIGITE UM NUMERO
+                System.out.println("Valor Inválido!");
+            }
+        }
+
+    }
+
     //--- Execução do programa -------------------------//
     public static void main(String[] args) {
 
         //Variaveis
         boolean validarMenu = false;
+        boolean flagValidaMenu = false;
         String opTeclado;
+        String opMenu;
+        String opcaoTeclado;
+        int auxiliarTeclado = -1;
 
         Vagas[] listaVagas;
         listaVagas = new Vagas[1];
 
         while (validarMenu == false) {
             // Apresentação do menu
-            mostrarMenu();
-
-            // Informar opção do menu acima
+            getMenu();
             System.out.printf("\nInforme a opção do menu: ");
-            opcaoTeclado = entrada.nextInt();
+            opMenu = entrada.next();
+            auxiliarTeclado = Integer.parseInt(opMenu);
+            validaMenu(opMenu);
 
             // Verifica se a opção menu inicial é válida - 1 até 5 = São as opções do menu 
-            while ((opcaoTeclado > 5) || (opcaoTeclado < 1)) {
+            while ((auxiliarTeclado > 5) || (auxiliarTeclado < 1)) {
                 System.out.printf("\nOpção inválida, tente novamente: ");
-                opcaoTeclado = entrada.nextInt();
+                auxiliarTeclado = entrada.nextInt();
             }
 
             //Array - jasouCadastrado[i].length
             //Caso do menu
-            switch (opcaoTeclado) {
+            switch (auxiliarTeclado) {
                 case 1:
                     System.out.printf("\n----------- Cadastro de vagas -----------\n\n");
                     for (int i = 0; i < listaVagas.length; i++) {
@@ -59,9 +81,8 @@ public class Domestica {
 
                         System.out.println("Qual a localidade?");
                         listaVagas[i].localVagas = entrada.nextLine();
-                        // int idade = Integer.parseInt(entrada.nextLine());
 
-                        System.out.println("Quando será o salário da diarista?");
+                        System.out.println("Quanto será o salário da diarista?");
                         listaVagas[i].salarioDiaristas = entrada.nextDouble();
 
                         System.out.println("Informe um detalhe da vaga? (Procure utilizar palavras chave)");
@@ -78,7 +99,6 @@ public class Domestica {
                             listaVagas[i].diasTrabalhados = entrada.nextByte();
                         }
                     }
-
                     break;
 
                 case 2:
@@ -101,6 +121,7 @@ public class Domestica {
 
                 case 4:
                     System.out.printf("\n----------- Aceitar a vaga -----------\n\n");
+
                     for (int i = 0; i < listaVagas.length; i++) {
 
                         System.out.println("Localidade: " + listaVagas[i].localVagas);
@@ -108,12 +129,11 @@ public class Domestica {
                         System.out.println("Dias trabalhados: " + listaVagas[i].diasTrabalhados);
                         System.out.println("Detalhes das Vagas: " + listaVagas[i].detalhesVagas);
                     }
+
                     System.out.print("Deseja aceitar a vaga? ");
                     System.out.println("S para SIM ou N para NÃO");
 
                     opTeclado = entrada.next();
-                    //validarMenu=true; = SE A VAGA FOI ACEITA, FECHA O PROGRAMA!
-
                     if ((opTeclado.equalsIgnoreCase("S") || (opTeclado.equalsIgnoreCase("N")))) {
 
                         for (int i = 0; i < listaVagas.length; i++) {
@@ -122,6 +142,9 @@ public class Domestica {
                         }
                         if (opTeclado.equalsIgnoreCase("S")) {
                             System.out.println("A vaga ESTÁ aceita!");
+                            System.out.println("");
+                            System.out.println("A vaga foi aceita!");
+                            validarMenu = true;
                         } else {
                             System.out.println("A vaga NÃO está aceita!");
                         }
