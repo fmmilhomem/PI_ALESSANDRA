@@ -4,13 +4,8 @@ import java.util.Scanner;
 
 public class Domestica {
 
-    // Variavel para ler entrada do usuarios 
     static Scanner entrada = new Scanner(System.in);
 
-    // Variaveis globais
-    /**
-     * Este metodo exibe o Menu Principal
-     */
     static void getMenu() {
         System.out.printf("\n---------- Menu -------------\n\n");
         System.out.println(" 1 - Cadastro de vagas:");
@@ -20,34 +15,11 @@ public class Domestica {
         System.out.println(" 5 - Sair "); //precisa elaborar algoritmo
     }
 
-    static void validaMenu(String opcaoDoMenu) {
-        boolean validarMenu = false;
-        boolean flagValidaMenu = false;
-        String opTeclado;
-        int auxiliarTeclado = -1;
-        flagValidaMenu = false;
-        String opcaoTeclado;
-
-        while (flagValidaMenu == false) {
-            //VALIDA SE DIGITOU ENTRE 1 E 5
-            try {
-                flagValidaMenu = true;
-            } catch (Exception error) {
-                //VERIFICA SE O USUARIO DIGIOU LETRA, RETORNA PARA O MENU E PEDE QUE DIGITE UM NUMERO
-                System.out.println("Valor Inválido!");
-            }
-        }
-
-    }
-
-    //--- Execução do programa -------------------------//
     public static void main(String[] args) {
 
-        //Variaveis
         boolean validarMenu = false;
         boolean flagValidaMenu = false;
         String opTeclado;
-        String opMenu;
         String opcaoTeclado;
         int auxiliarTeclado = -1;
 
@@ -57,19 +29,34 @@ public class Domestica {
         while (validarMenu == false) {
             // Apresentação do menu
             getMenu();
-            System.out.printf("\nInforme a opção do menu: ");
-            opMenu = entrada.next();
-            auxiliarTeclado = Integer.parseInt(opMenu);
-            validaMenu(opMenu);
+            flagValidaMenu = false;
+            while (flagValidaMenu == false) {
+                //VALIDA SE DIGITOU ENTRE 1 E 5
+                try {
+                    System.out.println("Informe uma opção do menu:");
+                    opcaoTeclado = entrada.next();
+                    auxiliarTeclado = Integer.parseInt(opcaoTeclado);
+                    flagValidaMenu = true;
+                } catch (Exception error) {
+                    //VERIFICA SE O USUARIO DIGIOU LETRA, RETORNA PARA O MENU E PEDE QUE DIGITE UM NUMERO
+                    System.out.println("Valor Inválido!");
+                }
+            }
 
             // Verifica se a opção menu inicial é válida - 1 até 5 = São as opções do menu 
             while ((auxiliarTeclado > 5) || (auxiliarTeclado < 1)) {
                 System.out.printf("\nOpção inválida, tente novamente: ");
-                auxiliarTeclado = entrada.nextInt();
+
+                try {
+                    opcaoTeclado = entrada.next();
+                    auxiliarTeclado = Integer.parseInt(opcaoTeclado);
+
+                } catch (Exception error) {
+                    //VERIFICA SE O USUARIO DIGIOU LETRA, RETORNA PARA O MENU E PEDE QUE DIGITE UM NUMERO
+                    System.out.println("Valor Inválido!");
+                }
             }
 
-            //Array - jasouCadastrado[i].length
-            //Caso do menu
             switch (auxiliarTeclado) {
                 case 1:
                     System.out.printf("\n----------- Cadastro de vagas -----------\n\n");
@@ -136,17 +123,11 @@ public class Domestica {
                     opTeclado = entrada.next();
                     if ((opTeclado.equalsIgnoreCase("S") || (opTeclado.equalsIgnoreCase("N")))) {
 
-                        for (int i = 0; i < listaVagas.length; i++) {
-
-                            listaVagas[i].statusVagas = true;
-                        }
                         if (opTeclado.equalsIgnoreCase("S")) {
-                            System.out.println("A vaga ESTÁ aceita!");
-                            System.out.println("");
-                            System.out.println("A vaga foi aceita!");
-                            validarMenu = true;
+                            System.out.println("A vaga está aceita!");
+
                         } else {
-                            System.out.println("A vaga NÃO está aceita!");
+                            System.out.println("A vaga não está aceita!");
                         }
 
                     } else {
@@ -163,12 +144,9 @@ public class Domestica {
 
                 default:
                     System.out.println("Valor Inválido, favor digita um número entre 1 e 5");
-                    validarMenu = true;
                     break;
-
             }
         }
         System.out.printf("\nObrigado volte sempre!\n"); // Finalizando programa
     }
-
 }
