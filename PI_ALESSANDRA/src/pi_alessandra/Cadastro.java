@@ -3,7 +3,8 @@ package pi_alessandra;
 import static pi_alessandra.Domestica.*;
 
 public class Cadastro {
-   static void cadastro() {
+
+    static void cadastrarVagas() {
         System.out.printf("\n----------- Cadastro de vagas -----------\n\n");
         for (int i = 0; i < listaVagas.length; i++) {
             //Iinicializando a posição do vetor
@@ -11,7 +12,7 @@ public class Cadastro {
             //Esvazia a entrada
             entrada.nextLine();
             System.out.println("Você irá para o cadastro da " + (i + 1) + "º vaga");
-            System.out.println("\nQual a localidade da "+ (i+1) +"º vaga?");
+            System.out.println("\nQual a localidade da " + (i + 1) + "º vaga?");
             listaVagas[i].localVagas = entrada.nextLine();
             System.out.println("Quanto será o salário da diarista?");
             listaVagas[i].salarioDiaristas = entrada.nextDouble();
@@ -30,5 +31,6 @@ public class Cadastro {
                 listaVagas[i].diasTrabalhados = entrada.nextByte();
             }
         }
-    }                       
+    }
+
 }

@@ -6,7 +6,9 @@ public class Domestica {
 
     // Variaveis Globais
     static Scanner entrada = new Scanner(System.in);
-    static Vagas[] listaVagas = new Vagas[2];
+    static Vagas[] listaVagas = new Vagas[1];
+    static String opcaoTeclado;
+    static boolean auxCase = false;
 
     static void imprimirRelatorio() {
 
@@ -17,27 +19,26 @@ public class Domestica {
             System.out.println("Detalhes da Vaga: " + listaVagas[i].detalhesVagas);
         }
     }
-    
+
     static void getMenu() {
         System.out.print("\n---------- Menu -------------\n");
         System.out.println(" 1 - Cadastro de vagas:");
         System.out.println(" 2 - Relatório");
         System.out.println(" 3 - Lêr detalhes da vaga");
-        System.out.println(" 4 - Aceitar a vaga");// precisa elaborar algoritmo
-        System.out.println(" 5 - Sair "); //precisa elaborar algoritmo
+        System.out.println(" 4 - Aceitar a vaga");
+        System.out.println(" 5 - Sair ");
         System.out.print("-----------------------------\n");
     }
 
     public static void main(String[] args) {
 
         boolean validarMenu = false;
-        boolean flagValidaMenu, auxCase = false;
-        String opcaoTeclado;
-        int auxiliarTeclado = 0;        
+        boolean flagValidaMenu;
+        int auxiliarTeclado = 0;
 
         do {
             // Apresentação do menu
-            getMenu();            
+            getMenu();
             flagValidaMenu = false;
             while (flagValidaMenu == false) {
                 //VALIDA SE DIGITOU ENTRE 1 E 5
@@ -68,7 +69,7 @@ public class Domestica {
 
             switch (auxiliarTeclado) {
                 case 1:
-                    Cadastro.cadastro();
+                    Cadastro.cadastrarVagas();
                     break;
                 case 2:
                     System.out.printf("\n----------- Relatório -----------\n\n");
@@ -83,26 +84,10 @@ public class Domestica {
                     break;
 
                 case 4:
-                    System.out.printf("\n----------- Aceitar a vaga -----------\n\n");                    
+                    System.out.printf("\n----------- Aceitar a vaga -----------\n\n");
                     imprimirRelatorio();
                     System.out.print("Deseja aceitar a vaga? ");
-                    
-                    do {
-                        System.out.println("S para SIM ou N para NÃO");
-                        opcaoTeclado = entrada.next();
-
-                        if ((opcaoTeclado.equalsIgnoreCase("S") || (opcaoTeclado.equalsIgnoreCase("N")))) {
-                            if (opcaoTeclado.equalsIgnoreCase("S")) {
-                                System.out.println("A vaga está aceita!");
-                                auxCase = true;
-                            } else {
-                                System.out.println("A vaga não está aceita!");
-                            }
-                        } else {
-                            System.out.println("Caractere inválido, favor tente de novo!");
-                        }
-                    } while (auxCase == false);
-
+                    AceitarVaga.aceitarVaga();
                     break;
                 case 5:
                     validarMenu = true;
@@ -116,3 +101,35 @@ public class Domestica {
         System.out.printf("\nObrigado volte sempre!\n"); // Finalizando programa
     }
 }
+
+
+/*   EXEMPLO DE COMO DESPOPULAR O VETOR
+
+package teste;
+public class Teste {
+
+    private static int[] vetor;
+
+    public static void main(String[] args) {
+        vetor = new int[]{1, 6, 3, 2, 5};
+        remove(3);
+        remove(6);
+        for (int i = 0; i < vetor.length; i++) {
+            System.out.println(vetor[i]);
+        }
+    }
+
+    public static void remove(int y) {
+        int[] vetorAux = new int[vetor.length - 1];
+        int index = 0;
+        for (int i = 0; i < vetor.length; i++) {
+            if (vetor[i] != y) {
+                vetorAux[index] = vetor[i];
+                index++;
+            }
+        }
+        vetor = vetorAux;
+    }
+
+}
+*/
