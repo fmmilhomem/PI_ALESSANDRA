@@ -6,7 +6,7 @@ public class Domestica {
         
     // VARIAVEIS GLOBAIS
     static Scanner entrada = new Scanner(System.in);
-    static DadosVaga[] listaVagas = new DadosVaga[10];
+    static Vagas[] listaVagas = new Vagas[10];
     static String opcaoTeclado;
     static boolean flagValidaMenu;
     static int auxiliarTeclado;
@@ -22,13 +22,13 @@ public class Domestica {
 
             switch (auxiliarTeclado) {
                 case 1:
-                    CadastroVaga.cadastrarVagas();
+                    Cadastro.cadastrarVagas();
                     break;
                 case 2:
-                    ListarVaga.imprimirVagas();
+                    ListarVagas.imprimirVagas();
                     break;
                 case 3:
-                    PesquisarVaga.menuPesquisar();
+                    Pesquisar.menuPesquisar();
                     break;
                 default:
                     validarMenu = true;
