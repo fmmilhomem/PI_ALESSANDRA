@@ -24,15 +24,6 @@ public class Domestica {
         }
     }
 
-    static void getMenu() {
-        System.out.print("\n---------- Menu -------------\n");
-        System.out.println(" 1 - Cadastro de vagas:");
-        System.out.println(" 2 - Relatório");
-        System.out.println(" 3 - Lêr detalhes da vaga");
-        System.out.println(" 4 - Aceitar a vaga");
-        System.out.println(" 5 - Sair ");
-        System.out.print("-----------------------------\n");
-    }
 
     public static void main(String[] args) {
 
@@ -42,7 +33,7 @@ public class Domestica {
 
         do {
             // Apresentação do menu
-            getMenu();
+            Menu.getMenu();
             flagValidaMenu = false;
             while (flagValidaMenu == false) {
                 //VALIDA SE DIGITOU ENTRE 1 E 5
@@ -73,7 +64,7 @@ public class Domestica {
 
             switch (auxiliarTeclado) {
                 case 1:
-                    Cadastro_.cadastrarVagas();
+                    Cadastro.cadastrarVagas();
                     break;
                 case 2:
                     System.out.printf("\n----------- Relatório -----------\n\n");
