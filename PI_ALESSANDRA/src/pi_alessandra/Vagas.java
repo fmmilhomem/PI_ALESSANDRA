@@ -6,5 +6,4 @@ public class Vagas {
     public double salarioDiaristas;
     public byte diasTrabalhados;
     public String detalhesVagas;
-    public boolean statusVagas=false;
 }
