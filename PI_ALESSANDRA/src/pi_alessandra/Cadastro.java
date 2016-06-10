@@ -4,14 +4,18 @@ import static pi_alessandra.Domestica.*;
 
 public class Cadastro {
 
-    static void cadastrarVagas() {
+    static void cadastrarVagas1() {
+        /**boolean opcaoB = true, opcaoBAux;
+        
         System.out.printf("\n----------- Cadastro de vagas -----------\n\n");
+        
         for (int i = 0; i < listaVagas.length; i++) {
             //Iinicializando a posição do vetor
             listaVagas[i] = new Vagas();
             //Esvazia a entrada
             entrada.nextLine();
-            System.out.println("Você irá para o cadastro da " + (i + 1) + "º vaga");
+            System.out.println("Código da " + (i + 1) + "º vaga");
+            listaVagas[i].id = i;
             System.out.println("\nQual a localidade da " + (i + 1) + "º vaga?");
             listaVagas[i].localVagas = entrada.nextLine();
             System.out.println("Quanto será o salário da diarista?");
@@ -30,7 +34,20 @@ public class Cadastro {
                 System.out.println("Quantos dias serão trabalhados?");
                 listaVagas[i].diasTrabalhados = entrada.nextByte();
             }
-        }
+            opcaoBAux = true;
+            do {
+                opcaoS = Bar.entrada.next();
+                if ("s".equalsIgnoreCase(opcaoS)) {
+                    opcaoBAux = false; // SAIR DO LAÇO
+                } else if ("n".equalsIgnoreCase(opcaoS)) {
+                    System.out.print("\n--------------------------------------------\n");
+                    System.out.println("Cadastro Finalizado!");
+                    opcaoB = false; // SAIR DO MENU CADASTRO
+                    opcaoBAux = false; // SAIR DO LAÇO
+                } else {
+                    System.out.print("Opção inválida! Tente novamente: ");
+                }
+            } while (opcaoBAux == true);
+        }*/
     }
-
 }

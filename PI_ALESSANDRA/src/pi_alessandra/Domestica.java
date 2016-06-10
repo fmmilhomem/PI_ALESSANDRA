@@ -6,17 +6,21 @@ public class Domestica {
 
     // Variaveis Globais
     static Scanner entrada = new Scanner(System.in);
-    static Vagas[] listaVagas = new Vagas[1];
+    static Vagas[] listaVagas = new Vagas[5];
     static String opcaoTeclado;
-    static boolean auxCase = false;
 
     static void imprimirRelatorio() {
-
         for (int i = 0; i < listaVagas.length; i++) {
-            System.out.println("Localidade: " + listaVagas[i].localVagas);
-            System.out.println("Salário da diarista: " + listaVagas[i].salarioDiaristas);
-            System.out.println("Dias trabalhados: " + listaVagas[i].diasTrabalhados);
-            System.out.println("Detalhes da Vaga: " + listaVagas[i].detalhesVagas);
+            if (listaVagas[i] == null) {
+                i = listaVagas.length;
+            } else {
+                System.out.println("Código da vaga: " + (listaVagas[i].id+1));
+                System.out.println("Localidade: " + listaVagas[i].localVagas);
+                System.out.println("Salário da diarista: " + listaVagas[i].salarioDiaristas);
+                System.out.println("Dias trabalhados: " + listaVagas[i].diasTrabalhados);
+                System.out.println("Detalhes da Vaga: " + listaVagas[i].detalhesVagas);
+                System.out.println();
+            }
         }
     }
 
@@ -69,7 +73,7 @@ public class Domestica {
 
             switch (auxiliarTeclado) {
                 case 1:
-                    Cadastro.cadastrarVagas();
+                    Cadastro_.cadastrarVagas();
                     break;
                 case 2:
                     System.out.printf("\n----------- Relatório -----------\n\n");
@@ -86,7 +90,6 @@ public class Domestica {
                 case 4:
                     System.out.printf("\n----------- Aceitar a vaga -----------\n\n");
                     imprimirRelatorio();
-                    System.out.print("Deseja aceitar a vaga? ");
                     AceitarVaga.aceitarVaga();
                     break;
                 case 5:
@@ -105,31 +108,31 @@ public class Domestica {
 
 /*   EXEMPLO DE COMO DESPOPULAR O VETOR
 
-package teste;
-public class Teste {
+ package teste;
+ public class Teste {
 
-    private static int[] vetor;
+ private static int[] vetor;
 
-    public static void main(String[] args) {
-        vetor = new int[]{1, 6, 3, 2, 5};
-        remove(3);
-        remove(6);
-        for (int i = 0; i < vetor.length; i++) {
-            System.out.println(vetor[i]);
-        }
-    }
+ public static void main(String[] args) {
+ vetor = new int[]{1, 6, 3, 2, 5};
+ remove(3);
+ remove(6);
+ for (int i = 0; i < vetor.length; i++) {
+ System.out.println(vetor[i]);
+ }
+ }
 
-    public static void remove(int y) {
-        int[] vetorAux = new int[vetor.length - 1];
-        int index = 0;
-        for (int i = 0; i < vetor.length; i++) {
-            if (vetor[i] != y) {
-                vetorAux[index] = vetor[i];
-                index++;
-            }
-        }
-        vetor = vetorAux;
-    }
+ public static void remove(int y) {
+ int[] vetorAux = new int[vetor.length - 1];
+ int index = 0;
+ for (int i = 0; i < vetor.length; i++) {
+ if (vetor[i] != y) {
+ vetorAux[index] = vetor[i];
+ index++;
+ }
+ }
+ vetor = vetorAux;
+ }
 
-}
-*/
+ }
+ */

@@ -1,25 +1,30 @@
 package pi_alessandra;
 
-import static pi_alessandra.Domestica.*;
-
 public class AceitarVaga {
 
     static void aceitarVaga() {
-        do {
-            System.out.println("S para SIM ou N para NÃO");
-            opcaoTeclado = entrada.next();
+        boolean flagValidaMenu = false;
+        int auxTeclado;
 
-            if ((opcaoTeclado.equalsIgnoreCase("S") || (opcaoTeclado.equalsIgnoreCase("N")))) {
-                if (opcaoTeclado.equalsIgnoreCase("S")) {
-                    System.out.println("A vaga está aceita!");
-                    auxCase = true;
-                } else {
-                    System.out.println("A vaga não está aceita!");
-                }
-            } else {
-                System.out.println("Caractere inválido, favor tente de novo!");
+        flagValidaMenu = false;
+
+        while (flagValidaMenu == false) {
+            try {
+                System.out.print("\nDigite o ID da vaga para aceita-la: ");
+                Domestica.opcaoTeclado = Domestica.entrada.next();
+                auxTeclado = Integer.parseInt(Domestica.opcaoTeclado);
+                flagValidaMenu = true;
+            } catch (Exception error) {
+                //VERIFICA SE O USUARIO DIGIOU LETRA, RETORNA PARA O MENU E PEDE QUE DIGITE UM NUMERO
+                System.out.println("Valor Inválido!");
             }
-        } while (auxCase == false);
+        }
+        for (int i = 0; i < Domestica.listaVagas.length; i++) {
+            auxTeclado = Integer.parseInt(Domestica.opcaoTeclado);
 
+            if (auxTeclado == Domestica.listaVagas[i].id) {
+                Domestica.listaVagas[i].id = 0;
+            }
+        }
     }
 }
