@@ -18,6 +18,7 @@ public class Domestica {
         do {
             //APRESENTAÇÃO DO MENU (classe)
             Menu.getMenu();
+            //VALIDA MENU
             auxiliarTeclado = Menu.validarMenu();
 
             switch (auxiliarTeclado) {

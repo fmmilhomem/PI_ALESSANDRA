@@ -39,18 +39,30 @@ public class Pesquisar {
     //VALIDAR CASE ID
     static int validarCaseId() {
         boolean auxCase = false;
-        int opcaoInt;
 
+        //VALIDA SE O VALOR DIGITADO É NUMERICO
         do {
-            System.out.print("Digite o ID: ");
-            opcaoInt = Domestica.entrada.nextInt();
-            if ((opcaoInt < 1) || (opcaoInt > 10) || (Domestica.listaVagas[opcaoInt - 1] == null)) {
-                System.out.println("ID Inválido, ou não existe vaga cadastrada com esse ID.");
-            } else {
-                auxCase = true;
+            Domestica.flagValidaMenu = false;
+            //VALIDA SE DIGITOU NUMERO
+            try {
+                System.out.print("Digite o ID: ");
+                Domestica.opcaoTeclado = Domestica.entrada.next();
+                Domestica.auxiliarTeclado = Integer.parseInt(Domestica.opcaoTeclado);
+                Domestica.flagValidaMenu = true;
+                if ((Domestica.auxiliarTeclado < 1) || (Domestica.auxiliarTeclado > 10)) {
+                    System.out.println("ID Inválido");
+                } else if (Domestica.listaVagas[Domestica.auxiliarTeclado - 1] == null) {
+                    System.out.println("Vaga com esse ID não esta cadastrada");
+                } else {
+                    auxCase = true;
+                }
+            } catch (Exception error) {
+                //VERIFICA SE O USUARIO DIGIOU LETRA, RETORNA PARA O MENU E PEDE QUE DIGITE UM NUMERO
+                System.out.println("Valor Inválido!");
             }
-        } while (auxCase == false);
-        return opcaoInt;
+        } while ((Domestica.flagValidaMenu == false));
+
+        return Domestica.auxiliarTeclado;
     }
 
     //VALIDAR CASE DIA
@@ -104,6 +116,8 @@ public class Pesquisar {
 
     //PESQUISA POR ID - TRATAR ERRO CARACTER
     static void psqId(int pesquisar) {
+
+        //LAÇO BUSCAR 
         int j = 0; // CONTADOR 
 
         for (i = 0; i < Domestica.listaVagas.length; i++) {
@@ -116,9 +130,7 @@ public class Pesquisar {
             }
         }
         if (j == 0) {
-            System.out.println("Vaga não encontrada");
-        } else {
-            //AceitarVaga;
+            System.out.println("Vaga não encontrada com este ID");
         }
     }
 
@@ -164,7 +176,7 @@ public class Pesquisar {
             }
         }
         if (j == 0) {
-            System.out.println("Vagas não encontradas, com esta categoria.");
+            System.out.println("Vagas não encontradas, com esta região.");
         } else {
             //AceitarVaga;
         }
@@ -201,5 +213,6 @@ public class Pesquisar {
         System.out.println("    Salário da diária: " + Domestica.listaVagas[i].salarioDiaristas);
         System.out.println("    Dias trabalhados: " + Domestica.listaVagas[i].diasTrabalhados);
 
+        AceitarVaga.aceitarVagaPsq();
     }
 }

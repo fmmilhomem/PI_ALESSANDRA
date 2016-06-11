@@ -16,12 +16,10 @@ public class Cadastro {
                 //INICIALIZA A POSIÇÃO DO VETOR
                 Domestica.listaVagas[i] = new DadosVagas();
                 
-                //ADICONA 
-                Domestica.listaVagas[i].id = 1 + i; //= Domestica.listaVagas[i].id + 1;
-
                 // INFORMAÇÕES DA VAGA
                 System.out.print("------------------------------------------\n");
-
+                //ADICONA O ID
+                Domestica.listaVagas[i].id = 1 + i;
                 //ESVAZIA A ENTRADA
                 Domestica.entrada.nextLine();                
                 
@@ -30,9 +28,9 @@ public class Cadastro {
                 System.out.println("\nQual a categoria?"); //SOLICITA A CATEGORIA
                 System.out.println("Domestica / Pintor / Pedreiro / Eletrica");
                 Domestica.listaVagas[i].categoria = Domestica.entrada.nextLine();   
-                System.out.println("Qual a localidade?");
+                System.out.println("Qual a região? \n(CENTRO / LESTE / NORTE / OESTE / SUL)");
                 Domestica.listaVagas[i].localVagas = Domestica.entrada.nextLine();
-                System.out.println("Quanto será o salário da diaria?");//SOLICITA O SALARIO
+                System.out.println("Quanto será o valor da diaria?");//SOLICITA O SALARIO
                 Domestica.listaVagas[i].salarioDiaristas = Domestica.entrada.nextDouble();
                 //ESVAZIA A ENTRADA
                 Domestica.entrada.nextLine();
