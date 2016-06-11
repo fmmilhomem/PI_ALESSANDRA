@@ -7,18 +7,29 @@ public class Pesquisar {
 
     //MENU PESQUISA
     static void menuPesquisar() {
+        int j = 0;
         System.out.print("\n----------------Pesquisar-----------------\n");
-        System.out.println("        (1) - Por ID");
-        System.out.println("        (2) - Por categoria");
-        System.out.println("        (3) - Por localidade");
-        System.out.println("        (4) - Por dias de trabalho");
-        System.out.println("        (0) - Voltar ao menu");
-        System.out.print("------------------------------------------\n");
-        Menu.validarOp();
-        Domestica.auxiliarTeclado = validarSubPsq();
-        casePsqVagas();
+        for (int i = 0; i < Domestica.listaVagas.length; i++) {
+            if (Domestica.listaVagas[i] == null) {
+                i = Domestica.listaVagas.length;
+            } else {
+                j++;                
+                System.out.println("        (1) - Por ID");
+                System.out.println("        (2) - Por categoria");
+                System.out.println("        (3) - Por localidade");
+                System.out.println("        (4) - Por dias de trabalho");
+                System.out.println("        (0) - Voltar ao menu");
+                System.out.print("------------------------------------------\n");
+                Menu.validarOp();
+                Domestica.auxiliarTeclado = validarSubPsq();
+                casePsqVagas();
+            }
+            if (j == 0) {
+                System.out.println("Não existe vagas disponiveis!");
+            }
+        }
     }
-
+    
     //METODO VALIDAR E RETORNAR O VALOR
     static int validarSubPsq() {
         // Verifica se a opção menu inicial é válida - 1 até 5 = São as opções do menu 
@@ -135,8 +146,8 @@ public class Pesquisar {
             } else if (pesquisar == Domestica.listaVagas[i].id) {
                 j++;
                 vagaSelecionada = i;
-                imprimirPesquisa();               
-            }           
+                imprimirPesquisa();
+            }
         }
         if (j == 0) {
             System.out.println("Vaga não encontrada com este ID");
