@@ -14,7 +14,7 @@ public class Pesquisar {
         Domestica.auxiliarTeclado = validarSubPsq();
         casePsqVagas();
     }
-     
+
     //METODO VALIDAR E RETORNAR O VALOR
     static int validarSubPsq() {
         // Verifica se a opção menu inicial é válida - 1 até 5 = São as opções do menu 
@@ -30,32 +30,30 @@ public class Pesquisar {
             }
         }
         return Domestica.auxiliarTeclado;
-    }   
-    
+    }
+
     //VALIDAR CASE
     static int lacoValidarCase() {
         boolean auxCase = false;
         int opcaoInt;
 
         do {
-            System.out.println("Digite o ID: ");
+            System.out.print("Digite o ID: ");
             opcaoInt = Domestica.entrada.nextInt();
-            if ((opcaoInt < 1) && (opcaoInt > Domestica.listaVagas.length)) {
-                System.out.println("ID não encontrado.");
-            } else if (Domestica.listaVagas[opcaoInt] == null) {
-                System.out.println("Não existe vaga com esse Id");
+            if ((opcaoInt < 1) || (opcaoInt > 10) || (Domestica.listaVagas[opcaoInt - 1] == null)) {
+                System.out.println("ID Inválido, ou não existe vaga cadastrada com esse ID.");
             } else {
                 auxCase = true;
             }
         } while (auxCase == false);
         return opcaoInt;
     }
-        
+
     //CASE SUBMENU PESQUISAR
     static void casePsqVagas() {
         // VARIAVEL PARA O CASE
         int opcaoInt = 0;
-        
+
         // SWITCH CASE
         switch (Domestica.auxiliarTeclado) {
             case 1:
@@ -76,20 +74,45 @@ public class Pesquisar {
         }
     }
 
-    //PESQUISA POR ID
+    //PESQUISA POR ID - TRATAR ERRO CARACTER
     static void psqId(int pesquisar) {
         int j = 0; // CONTADOR 
-                
+
         for (int i = 0; i < Domestica.listaVagas.length; i++) {
-            if (pesquisar == Domestica.listaVagas[i].id) {
+            
+            if (Domestica.listaVagas[i] == null) {
+                i = Domestica.listaVagas.length;
+            } else if (pesquisar == Domestica.listaVagas[i].id) {
                 j++;
                 System.out.println("ID da vaga: " + (Domestica.listaVagas[i].id));
                 System.out.println("    Categoria: " + Domestica.listaVagas[i].categoria);
                 System.out.println("    Detalhes da Vaga: " + Domestica.listaVagas[i].detalhesVagas);
                 System.out.println("    Localidade: " + Domestica.listaVagas[i].localVagas);
                 System.out.println();
-            } else if (Domestica.listaVagas[i] == null) {
+            }
+        }
+        if (j == 0) {
+            System.out.println("Vaga não encontrada");
+        } else {
+            ListarVagas.subMenuVagas();
+        }
+    }
+    
+    //FALTA CONECTAR NO CASE
+    static void psqCategoria(String pesquisar) {
+        int j = 0; // CONTADOR 
+
+        for (int i = 0; i < Domestica.listaVagas.length; i++) {
+            
+            if (Domestica.listaVagas[i] == null) {
                 i = Domestica.listaVagas.length;
+            } else if (Domestica.listaVagas[i].categoria.equalsIgnoreCase(pesquisar)) {
+                j++;
+                System.out.println("ID da vaga: " + (Domestica.listaVagas[i].id));
+                System.out.println("    Categoria: " + Domestica.listaVagas[i].categoria);
+                System.out.println("    Detalhes da Vaga: " + Domestica.listaVagas[i].detalhesVagas);
+                System.out.println("    Localidade: " + Domestica.listaVagas[i].localVagas);
+                System.out.println();
             }
         }
         if (j == 0) {
@@ -102,7 +125,7 @@ public class Pesquisar {
     // LISTA DE VAGAS POR PESQUISA
     static void psqVagas(int opcaoInt) {
         int j = 0; // CONTADOR 
-        
+
         for (int i = 0; i < Domestica.listaVagas.length; i++) {
             if (opcaoInt == (i + 1)) {
                 j++;
