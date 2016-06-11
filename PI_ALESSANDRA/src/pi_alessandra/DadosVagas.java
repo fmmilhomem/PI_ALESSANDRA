@@ -1,8 +1,9 @@
 package pi_alessandra;
 
-public class Vagas {
+public class DadosVagas {
     public int id;
-    public String localVagas;
+    public String categoria;
+    public String localVagas;   
     public double salarioDiaristas;
     public byte diasTrabalhados;
     public String detalhesVagas;

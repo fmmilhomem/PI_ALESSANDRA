@@ -12,34 +12,33 @@ public class Cadastro {
         do {
             //LAÇO PARA CADASTRO DE VAGAS	
             for (int i = 0; ((opcaoB == true) && (i < Domestica.listaVagas.length)); i++) {
-            /** LAÇO PARA VERIFICAR ONDE PAROU O CADASTRO
-            *    for (int j = 0; j < Domestica.listaVagas.length; j++) {
-            *        if (Domestica.listaVagas[j] == null) {
-            *            i = j;
-            *            break;
-            *        }
-            *    }
-            */
-                // INICIALIZA A POSIÇÃO DO VETOR
-                Domestica.listaVagas[i] = new Vagas();
+                             
+                //INICIALIZA A POSIÇÃO DO VETOR
+                Domestica.listaVagas[i] = new DadosVagas();
+                
+                //ADICONA 
+                Domestica.listaVagas[i].id = 1 + i; //= Domestica.listaVagas[i].id + 1;
 
                 // INFORMAÇÕES DA VAGA
                 System.out.print("------------------------------------------\n");
 
                 //ESVAZIA A ENTRADA
-                Domestica.entrada.nextLine();
-                Domestica.listaVagas[i].id = i;
+                Domestica.entrada.nextLine();                
+                
                 //INICIANDO INFORMAÇÕES DO CADASTRO DA VAGA                
-                System.out.println("Cadastrando vaga ID: " + (i + 1));  //INFORMA O ID DA VAGA              
-                System.out.println("Qual a localidade da vaga?"); //SOLICITA O LOCAL
+                System.out.println("Cadastrando vaga ID: " + Domestica.listaVagas[i].id);  //INFORMA O ID DA VAGA              
+                System.out.println("\nQual a categoria?"); //SOLICITA A CATEGORIA
+                System.out.println("Domestica / Pintor / Pedreiro / Eletrica");
+                Domestica.listaVagas[i].categoria = Domestica.entrada.nextLine();   
+                System.out.println("Qual a localidade?");
                 Domestica.listaVagas[i].localVagas = Domestica.entrada.nextLine();
-                System.out.println("Quanto será o salário da diarista?");//SOLICITA O SALARIO
+                System.out.println("Quanto será o salário da diaria?");//SOLICITA O SALARIO
                 Domestica.listaVagas[i].salarioDiaristas = Domestica.entrada.nextDouble();
                 //ESVAZIA A ENTRADA
                 Domestica.entrada.nextLine();
-                System.out.println("Informe um detalhes da vaga?"); //SOLICITA OS DETALHES
+                System.out.println("Informe os detalhes da vaga?"); //SOLICITA OS DETALHES
                 Domestica.listaVagas[i].detalhesVagas = Domestica.entrada.nextLine();
-                System.out.println("Quantos dias serão trabalhados?"); //SOLICITA O LOCAL
+                System.out.println("Quantos dias serão trabalhados? (1 a 7)"); //SOLICITA O LOCAL
                 Domestica.listaVagas[i].diasTrabalhados = Domestica.entrada.nextByte();
                 // VALIDA SE FOR MAIOR QUE 7 E MENOR QUE 1 DIA
                 while ((Domestica.listaVagas[i].diasTrabalhados > 7) || (Domestica.listaVagas[i].diasTrabalhados < 1)) {
@@ -49,7 +48,7 @@ public class Cadastro {
                 }
 
                 System.out.println("------------------------------------------");
-                System.out.print("Vaga cadastrada com sucesso!");
+                System.out.print("!Vaga cadastrada com sucesso!");
                 System.out.print("\n------------------------------------------");
 
                 System.out.println("\nDeseja cadastrar nova vaga? (S / N)");

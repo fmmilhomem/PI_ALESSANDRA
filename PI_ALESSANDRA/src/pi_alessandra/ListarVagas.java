@@ -1,9 +1,6 @@
 package pi_alessandra;
 
-/**
- * Esta classe busca as vagas e abre um submenu
- *
- */
+
 public class ListarVagas {
    
     //LISTA VAGAS CADASTRADAS
@@ -15,10 +12,11 @@ public class ListarVagas {
                 i = Domestica.listaVagas.length;
             } else {
                 j++;
-                System.out.println("ID da vaga: " + (Domestica.listaVagas[i].id + 1));
+                System.out.println("ID da vaga: " + (Domestica.listaVagas[i].id));
+                System.out.println("    Categoria: " + Domestica.listaVagas[i].categoria);
                 System.out.println("    Localidade: " + Domestica.listaVagas[i].localVagas);
                 System.out.println("    Detalhes da Vaga: " + Domestica.listaVagas[i].detalhesVagas);
-                System.out.println("    Salário da diarista: " + Domestica.listaVagas[i].salarioDiaristas);
+                System.out.println("    Salário da diária: " + Domestica.listaVagas[i].salarioDiaristas);
                 System.out.println("    Dias trabalhados: " + Domestica.listaVagas[i].diasTrabalhados);
                 System.out.println();
             }
@@ -35,19 +33,16 @@ public class ListarVagas {
         System.out.print("\n----------------Menu Vagas----------------\n");
         System.out.println("(1) - Ler detalhes de uma vaga");
         System.out.println("(2) - Aceitar uma vaga");
-        System.out.println("(3) - Pesquisar vaga");
         //VALIDA METODO        
-        Menu.validarOp();
-        
+        Menu.validarOp();        
         ListarVagas.CaseSubMenuVagas();
     }
     
     //METODO VALIDAR E RETORNAR O VALOR
     static int validarSubMenu() {
         // Verifica se a opção menu inicial é válida - 1 até 5 = São as opções do menu 
-        while ((Domestica.auxiliarTeclado < 1) || (Domestica.auxiliarTeclado > 3)) {
+        while ((Domestica.auxiliarTeclado < 1) || (Domestica.auxiliarTeclado > 2)) {
             System.out.printf("\nOpção inválida, tente novamente: ");
-
             try {
                 Domestica.opcaoTeclado = Domestica.entrada.next();
                 Domestica.auxiliarTeclado = Integer.parseInt(Domestica.opcaoTeclado);
@@ -64,17 +59,21 @@ public class ListarVagas {
         Domestica.auxiliarTeclado = ListarVagas.validarSubMenu();
 
         int opcaoInt; // VARIAVEL PARA O CASE
-
-        if (Domestica.auxiliarTeclado == 1) {
-            System.out.print("Digite o ID da vaga: ");
-            opcaoInt = Domestica.entrada.nextInt();
-        } else if (Domestica.auxiliarTeclado == 2) {
-            System.out.print("Digite o ID da vaga: ");
-            opcaoInt = Domestica.entrada.nextInt();
-        } else if (Domestica.auxiliarTeclado == 3) {
-            Pesquisar.menuPesquisar();
-        } else {
-            System.out.println();
+        switch (Domestica.auxiliarTeclado) {
+            case 1:
+                System.out.print("Digite o ID da vaga: ");
+                opcaoInt = Domestica.entrada.nextInt();
+                break;
+            case 2:
+                System.out.print("Digite o ID da vaga: ");
+                opcaoInt = Domestica.entrada.nextInt();
+                break;
+            case 3:
+                Pesquisar.menuPesquisar();
+                break;
+            default:
+                System.out.println();
+                break;
         }
     }
 }

@@ -6,7 +6,7 @@ public class Domestica {
         
     // VARIAVEIS GLOBAIS
     static Scanner entrada = new Scanner(System.in);
-    static Vagas[] listaVagas = new Vagas[10];
+    static DadosVagas[] listaVagas = new DadosVagas[10];
     static String opcaoTeclado;
     static boolean flagValidaMenu;
     static int auxiliarTeclado;
