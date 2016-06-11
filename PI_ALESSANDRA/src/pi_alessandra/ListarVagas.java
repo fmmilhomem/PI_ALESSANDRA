@@ -12,13 +12,13 @@ public class ListarVagas {
                 i = Domestica.listaVagas.length;
             } else {
                 j++;
+                System.out.println();
                 System.out.println("ID da vaga: " + (Domestica.listaVagas[i].id));
                 System.out.println("    Categoria: " + Domestica.listaVagas[i].categoria);
                 System.out.println("    Localidade: " + Domestica.listaVagas[i].localVagas);
                 System.out.println("    Detalhes da Vaga: " + Domestica.listaVagas[i].detalhesVagas);
                 System.out.println("    Salário da diária: " + Domestica.listaVagas[i].salarioDiaristas);
-                System.out.println("    Dias trabalhados: " + Domestica.listaVagas[i].diasTrabalhados);
-                System.out.println();
+                System.out.println("    Dias trabalhados: " + Domestica.listaVagas[i].diasTrabalhados);                
             }
         }
         if (j == 0) {

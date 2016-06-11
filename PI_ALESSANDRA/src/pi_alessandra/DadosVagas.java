@@ -5,6 +5,6 @@ public class DadosVagas {
     public String categoria;
     public String localVagas;   
     public double salarioDiaristas;
-    public byte diasTrabalhados;
+    public int diasTrabalhados;
     public String detalhesVagas;
 }

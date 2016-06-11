@@ -34,6 +34,6 @@ public class Domestica {
                     validarMenu = true;
             }
         } while (validarMenu == false);
-        System.out.printf("\nObrigado volte sempre!\n"); // Finalizando programa
+        System.out.printf("\nObrigado!\n"); // Finalizando programa
     }
 }

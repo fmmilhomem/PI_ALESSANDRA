@@ -39,12 +39,12 @@ public class Cadastro {
                 System.out.println("Informe os detalhes da vaga?"); //SOLICITA OS DETALHES
                 Domestica.listaVagas[i].detalhesVagas = Domestica.entrada.nextLine();
                 System.out.println("Quantos dias serão trabalhados? (1 a 7)"); //SOLICITA O LOCAL
-                Domestica.listaVagas[i].diasTrabalhados = Domestica.entrada.nextByte();
+                Domestica.listaVagas[i].diasTrabalhados = Domestica.entrada.nextInt();
                 // VALIDA SE FOR MAIOR QUE 7 E MENOR QUE 1 DIA
-                while ((Domestica.listaVagas[i].diasTrabalhados > 7) || (Domestica.listaVagas[i].diasTrabalhados < 1)) {
+                while ((Domestica.listaVagas[i].diasTrabalhados < 1) || (Domestica.listaVagas[i].diasTrabalhados > 7)) {
                     System.out.println("Valor inválido, digite um número entre 1 e 7");
                     System.out.println("Quantos dias serão trabalhados?");
-                    Domestica.listaVagas[i].diasTrabalhados = Domestica.entrada.nextByte();
+                    Domestica.listaVagas[i].diasTrabalhados = Domestica.entrada.nextInt();
                 }
 
                 System.out.println("------------------------------------------");
