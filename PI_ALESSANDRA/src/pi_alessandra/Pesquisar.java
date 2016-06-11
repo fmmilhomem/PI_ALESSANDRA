@@ -11,27 +11,10 @@ public class Pesquisar {
         System.out.println("        (4) - Por dias de trabalho");
         System.out.print("------------------------------------------\n");
         Menu.validarOp();
+        Domestica.auxiliarTeclado = validarSubPsq();
+        casePsqVagas();
     }
-    
-    //VALIDAR CASE
-    static int lacoValidarCase() {
-        boolean auxCase = false;
-        int opcaoInt;
-
-        do {
-            System.out.println("Digite o ID: ");
-            opcaoInt = Domestica.entrada.nextInt();
-            if ((opcaoInt < 0) && (opcaoInt > Domestica.listaVagas.length)) {
-                System.out.println("ID não encontrado.");
-            } else if (Domestica.listaVagas[opcaoInt] == null) {
-                System.out.println("Não existe vaga com esse Id");
-            } else {
-                auxCase = true;
-            }
-        } while (auxCase == false);
-        return opcaoInt;
-    }
-    
+     
     //METODO VALIDAR E RETORNAR O VALOR
     static int validarSubPsq() {
         // Verifica se a opção menu inicial é válida - 1 até 5 = São as opções do menu 
@@ -47,18 +30,37 @@ public class Pesquisar {
             }
         }
         return Domestica.auxiliarTeclado;
-    }
+    }   
     
+    //VALIDAR CASE
+    static int lacoValidarCase() {
+        boolean auxCase = false;
+        int opcaoInt;
+
+        do {
+            System.out.println("Digite o ID: ");
+            opcaoInt = Domestica.entrada.nextInt();
+            if ((opcaoInt < 1) && (opcaoInt > Domestica.listaVagas.length)) {
+                System.out.println("ID não encontrado.");
+            } else if (Domestica.listaVagas[opcaoInt] == null) {
+                System.out.println("Não existe vaga com esse Id");
+            } else {
+                auxCase = true;
+            }
+        } while (auxCase == false);
+        return opcaoInt;
+    }
+        
     //CASE SUBMENU PESQUISAR
     static void casePsqVagas() {
         // VARIAVEL PARA O CASE
-        int opcaoInt;
+        int opcaoInt = 0;
         
         // SWITCH CASE
         switch (Domestica.auxiliarTeclado) {
             case 1:
-                opcaoInt = validarSubPsq();
                 //LAÇO PARA BUSCAR POR ID
+                opcaoInt = lacoValidarCase();
                 psqId(opcaoInt);
                 break;
             case 2:
@@ -77,6 +79,7 @@ public class Pesquisar {
     //PESQUISA POR ID
     static void psqId(int pesquisar) {
         int j = 0; // CONTADOR 
+                
         for (int i = 0; i < Domestica.listaVagas.length; i++) {
             if (pesquisar == Domestica.listaVagas[i].id) {
                 j++;
