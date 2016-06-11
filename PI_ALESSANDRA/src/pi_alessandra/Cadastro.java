@@ -4,41 +4,49 @@ public class Cadastro {
 
     public static void cadastrarVagas() {
         // VARIAVEIS
-        String opcaoS = "";
-        boolean opcaoB = true, opcaoBAux;
+        String opcaoS;
+        boolean opcaoB = true, opcaoBAux, validaValor = false;
 
         System.out.print("\n-----------------Cadastro-----------------\n");
 
         do {
             //LAÇO PARA CADASTRO DE VAGAS	
-            for (int i = 0; ((opcaoB == true) && (i < Domestica.listaVagas.length)); i++) {
-                             
+            for (int i = 3; ((opcaoB == true) && (i < Domestica.listaVagas.length)); i++) {
+
                 //INICIALIZA A POSIÇÃO DO VETOR
                 Domestica.listaVagas[i] = new DadosVagas();
-                
+
                 // INFORMAÇÕES DA VAGA
                 System.out.print("------------------------------------------\n");
                 //ADICONA O ID
                 Domestica.listaVagas[i].id = 1 + i;
                 //ESVAZIA A ENTRADA
-                Domestica.entrada.nextLine();                
-                
+                Domestica.entrada.nextLine();
+
                 //INICIANDO INFORMAÇÕES DO CADASTRO DA VAGA                
                 System.out.println("Cadastrando vaga ID: " + Domestica.listaVagas[i].id);  //INFORMA O ID DA VAGA              
                 System.out.println("\nQual a categoria?"); //SOLICITA A CATEGORIA
                 System.out.println("Domestica / Pintor / Pedreiro / Eletrica");
-                Domestica.listaVagas[i].categoria = Domestica.entrada.nextLine();   
+                Domestica.listaVagas[i].categoria = Domestica.entrada.nextLine();
                 System.out.println("Qual a região? \n(CENTRO / LESTE / NORTE / OESTE / SUL)");
                 Domestica.listaVagas[i].localVagas = Domestica.entrada.nextLine();
                 System.out.println("Quanto será o valor da diaria?");//SOLICITA O SALARIO
-                Domestica.listaVagas[i].salarioDiaristas = Domestica.entrada.nextDouble();
+                //VALIDAR SE FOI DIGITADO UM VALOR MAIOR QUE 0
+                do {
+                    Domestica.listaVagas[i].salarioDiaristas = Domestica.entrada.nextDouble();
+                    if (Domestica.listaVagas[i].salarioDiaristas <= 0){
+                        System.out.println("Insira um valor maior que 0!");
+                    } else {
+                        validaValor = true;
+                    }
+                } while(validaValor == false);
                 //ESVAZIA A ENTRADA
                 Domestica.entrada.nextLine();
                 System.out.println("Informe os detalhes da vaga?"); //SOLICITA OS DETALHES
                 Domestica.listaVagas[i].detalhesVagas = Domestica.entrada.nextLine();
                 System.out.println("Quantos dias serão trabalhados? (1 a 7)"); //SOLICITA O LOCAL
                 Domestica.listaVagas[i].diasTrabalhados = Domestica.entrada.nextInt();
-                // VALIDA SE FOR MAIOR QUE 7 E MENOR QUE 1 DIA
+                //VALIDA SE FOR MAIOR QUE 7 E MENOR QUE 1 DIA
                 while ((Domestica.listaVagas[i].diasTrabalhados < 1) || (Domestica.listaVagas[i].diasTrabalhados > 7)) {
                     System.out.println("Valor inválido, digite um número entre 1 e 7");
                     System.out.println("Quantos dias serão trabalhados?");

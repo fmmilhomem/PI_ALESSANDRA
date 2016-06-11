@@ -13,7 +13,9 @@ public class Domestica {
 
     public static void main(String[] args) {
         //VARIAVEIS
-        boolean validarMenu = false; //LAÇO DO MENU RECEBE FALSO     
+        boolean validarMenu = false; //LAÇO DO MENU RECEBE FALSO 
+        //CADASTRO DE TRES VAGAS
+        DadosVagas.cadastroTresVagas();
         //LAÇO
         do {
             //APRESENTAÇÃO DO MENU (classe)

@@ -3,7 +3,7 @@ package pi_alessandra;
 public class Pesquisar {
 
     //VARIAVEL CONTADOR GLOBAL
-    static int i;
+    static int i, vagaSelecionada;
 
     //MENU PESQUISA
     static void menuPesquisar() {
@@ -24,7 +24,6 @@ public class Pesquisar {
         // Verifica se a opção menu inicial é válida - 1 até 5 = São as opções do menu 
         while ((Domestica.auxiliarTeclado < 0) || (Domestica.auxiliarTeclado > 4)) {
             System.out.printf("\nOpção inválida, tente novamente: ");
-
             try {
                 Domestica.opcaoTeclado = Domestica.entrada.next();
                 Domestica.auxiliarTeclado = Integer.parseInt(Domestica.opcaoTeclado);
@@ -42,25 +41,28 @@ public class Pesquisar {
 
         //VALIDA SE O VALOR DIGITADO É NUMERICO
         do {
-            Domestica.flagValidaMenu = false;
             //VALIDA SE DIGITOU NUMERO
             try {
-                System.out.print("Digite o ID: ");
+                System.out.print("Digite o ID ou (C)Cancelar: ");
                 Domestica.opcaoTeclado = Domestica.entrada.next();
-                Domestica.auxiliarTeclado = Integer.parseInt(Domestica.opcaoTeclado);
-                Domestica.flagValidaMenu = true;
-                if ((Domestica.auxiliarTeclado < 1) || (Domestica.auxiliarTeclado > 10)) {
-                    System.out.println("ID Inválido");
-                } else if (Domestica.listaVagas[Domestica.auxiliarTeclado - 1] == null) {
-                    System.out.println("Vaga com esse ID não esta cadastrada");
-                } else {
+                if ("C".equalsIgnoreCase(Domestica.opcaoTeclado)) {
                     auxCase = true;
+                    Domestica.auxiliarTeclado = 0;
+                } else {
+                    Domestica.auxiliarTeclado = Integer.parseInt(Domestica.opcaoTeclado);
+                    if ((Domestica.auxiliarTeclado < 1) || (Domestica.auxiliarTeclado > 10)) {
+                        System.out.println("ID Inválido");
+                    } else if (Domestica.listaVagas[Domestica.auxiliarTeclado - 1] == null) { //(-1) para encontrar a posição do ID. ID Inicia apartir de 1
+                        System.out.println("Vaga com esse ID não esta cadastrada");
+                    } else {
+                        auxCase = true;
+                    }
                 }
             } catch (Exception error) {
                 //VERIFICA SE O USUARIO DIGIOU LETRA, RETORNA PARA O MENU E PEDE QUE DIGITE UM NUMERO
                 System.out.println("Valor Inválido!");
             }
-        } while ((Domestica.flagValidaMenu == false));
+        } while ((auxCase == false));
 
         return Domestica.auxiliarTeclado;
     }
@@ -96,17 +98,23 @@ public class Pesquisar {
             case 1:
                 //LAÇO PARA BUSCAR POR ID
                 opcaoInt = validarCaseId();
-                psqId(opcaoInt);
+                if (opcaoInt != 0) {
+                    psqId(opcaoInt);
+                }
+                menuPesquisar();
                 break;
             case 2:
                 psqCategoria();
+                menuPesquisar();
                 break;
             case 3:
                 psqLocal();
+                menuPesquisar();
                 break;
             case 4:
                 opcaoInt = validarCaseDia();
                 psqDia(opcaoInt);
+                menuPesquisar();
                 break;
             default:
                 System.out.println();
@@ -126,8 +134,9 @@ public class Pesquisar {
                 i = Domestica.listaVagas.length;
             } else if (pesquisar == Domestica.listaVagas[i].id) {
                 j++;
-                imprimirPesquisa();
-            }
+                vagaSelecionada = i;
+                imprimirPesquisa();               
+            }           
         }
         if (j == 0) {
             System.out.println("Vaga não encontrada com este ID");
