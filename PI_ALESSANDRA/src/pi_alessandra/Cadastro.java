@@ -5,7 +5,7 @@ public class Cadastro {
     static void cadastrarVagas() {
         // VARIAVEIS
         String opcaoS;
-        boolean opcaoB = true, opcaoBAux, validaValor, validaDias;
+        boolean opcaoB = true, opcaoBAux, validaValor, validaDias, validaRegiao, validaCategoria;
 
         System.out.print("\n-----------------Cadastro-----------------\n");
 
@@ -25,11 +25,44 @@ public class Cadastro {
 
                 //INICIANDO INFORMAÇÕES DO CADASTRO DA VAGA                
                 System.out.println("Cadastrando vaga ID: " + Domestica.listaVagas[i].id);  //INFORMA O ID DA VAGA              
-                System.out.println("\nQual a categoria?"); //SOLICITA A CATEGORIA
-                System.out.println("Domestica / Pintor / Pedreiro / Eletrica");
-                Domestica.listaVagas[i].categoria = Domestica.entrada.nextLine();
-                System.out.println("Qual a região? \n(CENTRO / LESTE / NORTE / OESTE / SUL)");
-                Domestica.listaVagas[i].localVagas = Domestica.entrada.nextLine();
+                System.out.println("\nQual a categoria?"); //SOLICITA A CATEGORIA                
+                //VALIDANDO SE OPÇÃO É VALIDA 
+                do {
+                    System.out.println("(Domestica / Pintor / Pedreiro / Eletrica)");
+                    validaCategoria = false;
+                    Domestica.listaVagas[i].categoria = Domestica.entrada.nextLine();
+                    if ("DOMESTICA".equalsIgnoreCase(Domestica.listaVagas[i].categoria)) {
+                        validaCategoria = true;
+                    } else if ("PINTOR".equalsIgnoreCase(Domestica.listaVagas[i].categoria)) {
+                        validaCategoria = true;
+                    } else if ("PEDREIRO".equalsIgnoreCase(Domestica.listaVagas[i].categoria)) {
+                        validaCategoria = true;
+                    } else if ("ELETRICA".equalsIgnoreCase(Domestica.listaVagas[i].categoria)) {
+                        validaCategoria = true;
+                    } else {
+                        System.out.println("Região Inválida.");
+                    }
+                } while (validaCategoria == false);
+                
+                //VALIDANDO SE OPÇÃO É VALIDA 
+                do {
+                    System.out.println("Qual a região? \n(CENTRO / LESTE / NORTE / OESTE / SUL)");
+                    validaRegiao = false;
+                    Domestica.listaVagas[i].localVagas = Domestica.entrada.nextLine();
+                    if ("CENTRO".equalsIgnoreCase(Domestica.listaVagas[i].localVagas)) {
+                        validaRegiao = true;
+                    } else if ("LESTE".equalsIgnoreCase(Domestica.listaVagas[i].localVagas)) {
+                        validaRegiao = true;
+                    } else if ("NORTE".equalsIgnoreCase(Domestica.listaVagas[i].localVagas)) {
+                        validaRegiao = true;
+                    } else if ("OESTE".equalsIgnoreCase(Domestica.listaVagas[i].localVagas)) {
+                        validaRegiao = true;
+                    } else if ("SUL".equalsIgnoreCase(Domestica.listaVagas[i].localVagas)) {
+                        validaRegiao = true;
+                    } else {
+                        System.out.println("Região Inválida.");
+                    }
+                } while (validaRegiao == false);
                 System.out.println("Quanto será o valor da diaria?");//SOLICITA O SALARIO
                 //VALIDAR SE FOI DIGITADO UM VALOR MAIOR QUE 0
                 do {
@@ -52,7 +85,7 @@ public class Cadastro {
                     validaDias = false;
                     Domestica.listaVagas[i].diasTrabalhados = Domestica.entrada.nextInt();
                     if (((Domestica.listaVagas[i].diasTrabalhados < 1) || (Domestica.listaVagas[i].diasTrabalhados > 7))) {
-                         System.out.println("Valor inválido, digite um número entre 1 e 7");
+                        System.out.println("Valor inválido, digite um número entre 1 e 7");
                     } else {
                         validaDias = true;
                     }
