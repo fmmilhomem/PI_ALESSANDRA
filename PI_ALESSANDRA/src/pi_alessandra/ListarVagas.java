@@ -39,33 +39,42 @@ public class ListarVagas {
 
     //METODO VALIDAR E RETORNAR O VALOR
     static int validarSubMenu() {
+        boolean validarSubMenu = false;
         do {
-        // Verifica se a opção menu inicial é válida - 0 até 2 = São as opções do menu 
+            // Verifica se a opção menu inicial é válida - 0 até 2 = São as opções do menu 
             Menu.validarOp();
             if ((Domestica.auxiliarTeclado < 0) || (Domestica.auxiliarTeclado > 2)) {
-                System.out.println("Opção de 0 a 2!");
+                System.out.println("Opções 0 ate 2!");
+            } else {
+                validarSubMenu = true;
             }
-        } while ((Domestica.auxiliarTeclado < 0) || (Domestica.auxiliarTeclado > 2));
+        } while (validarSubMenu == false);
         return Domestica.auxiliarTeclado;
     }
 
     //CRIA OPÇÃO MENU DENTRO SUBMENU
     static void CaseSubMenuVagas() {
         Domestica.auxiliarTeclado = validarSubMenu();
-        
-        int opcaoInt; // VARIAVEL PARA O CASE
+        int opcaoInt = 0; // VARIAVEL PARA O CASE
         switch (Domestica.auxiliarTeclado) {
             case 1:
                 opcaoInt = Pesquisar.validarCaseId();
-                Pesquisar.psqId(opcaoInt);
+                if (opcaoInt == 0) {
+                    subMenuVagas();
+                } else {
+                    Pesquisar.psqId(opcaoInt);
+                }
                 break;
             case 2:
                 opcaoInt = Pesquisar.validarCaseId();
-                Pesquisar.psqId(opcaoInt);
+                if (opcaoInt == 0) {
+                    subMenuVagas();
+                } else {
+                    Pesquisar.psqId(opcaoInt);
+                }
                 break;
             default:
                 System.out.println();
-                break;
         }
     }
 }

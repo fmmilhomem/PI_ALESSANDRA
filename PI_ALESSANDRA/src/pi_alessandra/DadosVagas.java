@@ -26,7 +26,7 @@ public class DadosVagas {
         
         Domestica.listaVagas[1].id = 2;
         Domestica.listaVagas[1].categoria = "Eletrica";
-        Domestica.listaVagas[1].localVagas = "SUL";
+        Domestica.listaVagas[1].localVagas = "NORTE";
         Domestica.listaVagas[1].salarioDiaristas = 120;
         Domestica.listaVagas[1].detalhesVagas = "Vaga de eletricista para trocar djuntores. Rua um, nº 1";
         Domestica.listaVagas[1].diasTrabalhados = 2;
@@ -36,7 +36,7 @@ public class DadosVagas {
         
         Domestica.listaVagas[2].id = 3;
         Domestica.listaVagas[2].categoria = "Pintor";
-        Domestica.listaVagas[2].localVagas = "SUL";
+        Domestica.listaVagas[2].localVagas = "CENTRO";
         Domestica.listaVagas[2].salarioDiaristas = 120;
         Domestica.listaVagas[2].detalhesVagas = "Vaga para pintar um apartamento, 2 m². Rua dois, nº 2, bl 20";
         Domestica.listaVagas[2].diasTrabalhados = 5;

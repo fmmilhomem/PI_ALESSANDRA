@@ -2,10 +2,10 @@ package pi_alessandra;
 
 public class Cadastro {
 
-    public static void cadastrarVagas() {
+    static void cadastrarVagas() {
         // VARIAVEIS
         String opcaoS;
-        boolean opcaoB = true, opcaoBAux, validaValor = false;
+        boolean opcaoB = true, opcaoBAux, validaValor, validaDias;
 
         System.out.print("\n-----------------Cadastro-----------------\n");
 
@@ -33,26 +33,30 @@ public class Cadastro {
                 System.out.println("Quanto será o valor da diaria?");//SOLICITA O SALARIO
                 //VALIDAR SE FOI DIGITADO UM VALOR MAIOR QUE 0
                 do {
+                    validaValor = false;
                     Domestica.listaVagas[i].salarioDiaristas = Domestica.entrada.nextDouble();
-                    if (Domestica.listaVagas[i].salarioDiaristas <= 0){
+                    if (Domestica.listaVagas[i].salarioDiaristas <= 0) {
                         System.out.println("Insira um valor maior que 0!");
                     } else {
                         validaValor = true;
                     }
-                } while(validaValor == false);
+                } while (validaValor == false);
                 //ESVAZIA A ENTRADA
                 Domestica.entrada.nextLine();
                 System.out.println("Informe os detalhes da vaga?"); //SOLICITA OS DETALHES
                 Domestica.listaVagas[i].detalhesVagas = Domestica.entrada.nextLine();
-                System.out.println("Quantos dias serão trabalhados? (1 a 7)"); //SOLICITA O LOCAL
-                Domestica.listaVagas[i].diasTrabalhados = Domestica.entrada.nextInt();
-                //VALIDA SE FOR MAIOR QUE 7 E MENOR QUE 1 DIA
-                while ((Domestica.listaVagas[i].diasTrabalhados < 1) || (Domestica.listaVagas[i].diasTrabalhados > 7)) {
-                    System.out.println("Valor inválido, digite um número entre 1 e 7");
-                    System.out.println("Quantos dias serão trabalhados?");
-                    Domestica.listaVagas[i].diasTrabalhados = Domestica.entrada.nextInt();
-                }
 
+                System.out.println("Quantos dias serão trabalhados? (1 a 7)");
+                //LAÇO VALIDA SE OPÇÂO FOI DIGITADO CORRETA OPÇÃO DIAS
+                do {
+                    validaDias = false;
+                    Domestica.listaVagas[i].diasTrabalhados = Domestica.entrada.nextInt();
+                    if (((Domestica.listaVagas[i].diasTrabalhados < 1) || (Domestica.listaVagas[i].diasTrabalhados > 7))) {
+                         System.out.println("Valor inválido, digite um número entre 1 e 7");
+                    } else {
+                        validaDias = true;
+                    }
+                } while (validaDias == false);
                 System.out.println("------------------------------------------");
                 System.out.print("!Vaga cadastrada com sucesso!");
                 System.out.print("\n------------------------------------------");
