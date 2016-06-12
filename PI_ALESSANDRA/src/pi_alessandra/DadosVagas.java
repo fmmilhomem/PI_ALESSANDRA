@@ -28,7 +28,7 @@ public class DadosVagas {
         Domestica.listaVagas[1].categoria = "Eletrica";
         Domestica.listaVagas[1].localVagas = "NORTE";
         Domestica.listaVagas[1].salarioDiaristas = 120;
-        Domestica.listaVagas[1].detalhesVagas = "Vaga de eletricista para trocar djuntores. Rua um, nº 1";
+        Domestica.listaVagas[1].detalhesVagas = "Vaga de eletricista para trocar disjuntores. Rua um, nº 1";
         Domestica.listaVagas[1].diasTrabalhados = 2;
         //VAGA 3
         //INICIALIZA A POSIÇÃO DO VETOR

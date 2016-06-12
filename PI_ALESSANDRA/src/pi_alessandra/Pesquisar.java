@@ -63,8 +63,6 @@ public class Pesquisar {
                     Domestica.auxiliarTeclado = Integer.parseInt(Domestica.opcaoTeclado);
                     if ((Domestica.auxiliarTeclado < 1) || (Domestica.auxiliarTeclado > 10)) {
                         System.out.println("ID Inválido");
-                    } else if (Domestica.listaVagas[Domestica.auxiliarTeclado - 1] == null) { //(-1) para encontrar a posição do ID. ID Inicia apartir de 1
-                        System.out.println("Vaga com esse ID não esta cadastrada");
                     } else {
                         auxCase = true;
                     }
@@ -232,7 +230,7 @@ public class Pesquisar {
         System.out.println("    Categoria: " + Domestica.listaVagas[i].categoria);
         System.out.println("    Localidade: " + Domestica.listaVagas[i].localVagas);
         System.out.println("    Detalhes da Vaga: " + Domestica.listaVagas[i].detalhesVagas);
-        System.out.println("    Salário da diária: " + Domestica.listaVagas[i].salarioDiaristas);
+        System.out.println("    Valor da diária: R$ " + Domestica.listaVagas[i].salarioDiaristas);
         System.out.println("    Dias trabalhados: " + Domestica.listaVagas[i].diasTrabalhados);
     }
 }

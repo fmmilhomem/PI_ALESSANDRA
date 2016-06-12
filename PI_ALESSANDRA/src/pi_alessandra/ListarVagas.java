@@ -16,7 +16,7 @@ public class ListarVagas {
                 System.out.println("    Categoria: " + Domestica.listaVagas[i].categoria);
                 System.out.println("    Localidade: " + Domestica.listaVagas[i].localVagas);
                 System.out.println("    Detalhes da Vaga: " + Domestica.listaVagas[i].detalhesVagas);
-                System.out.println("    Salário da diária: " + Domestica.listaVagas[i].salarioDiaristas);
+                System.out.println("    Valor da diária: R$ " + Domestica.listaVagas[i].salarioDiaristas);
                 System.out.println("    Dias para o serviço: " + Domestica.listaVagas[i].diasTrabalhados);
             }
         }

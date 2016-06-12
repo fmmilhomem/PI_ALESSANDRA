@@ -28,7 +28,7 @@ public class Cadastro {
                 System.out.println("\nQual a categoria?"); //SOLICITA A CATEGORIA                
                 //VALIDANDO SE OPÇÃO É VALIDA 
                 do {
-                    System.out.println("(Domestica / Pintor / Pedreiro / Eletrica)");
+                    System.out.println("(Domestica / Pintor / Pedreiro / Eletricista)");
                     validaCategoria = false;
                     Domestica.listaVagas[i].categoria = Domestica.entrada.nextLine();
                     if ("DOMESTICA".equalsIgnoreCase(Domestica.listaVagas[i].categoria)) {
@@ -37,10 +37,10 @@ public class Cadastro {
                         validaCategoria = true;
                     } else if ("PEDREIRO".equalsIgnoreCase(Domestica.listaVagas[i].categoria)) {
                         validaCategoria = true;
-                    } else if ("ELETRICA".equalsIgnoreCase(Domestica.listaVagas[i].categoria)) {
+                    } else if ("ELETRICISTA".equalsIgnoreCase(Domestica.listaVagas[i].categoria)) {
                         validaCategoria = true;
                     } else {
-                        System.out.println("Região Inválida.");
+                        System.out.println("Categoria Inválida.");
                     }
                 } while (validaCategoria == false);
                 
@@ -63,9 +63,10 @@ public class Cadastro {
                         System.out.println("Região Inválida.");
                     }
                 } while (validaRegiao == false);
-                System.out.println("Quanto será o valor da diaria?");//SOLICITA O SALARIO
                 //VALIDAR SE FOI DIGITADO UM VALOR MAIOR QUE 0
                 do {
+                System.out.println("Quanto será o valor da diaria?");//SOLICITA O SALARIO
+                System.out.print("R$ ");                
                     validaValor = false;
                     Domestica.listaVagas[i].salarioDiaristas = Domestica.entrada.nextDouble();
                     if (Domestica.listaVagas[i].salarioDiaristas <= 0) {
